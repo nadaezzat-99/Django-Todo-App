@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="my-3 display-5 fw-bold ls-tight text-center">
+    <span style="color: hsl(218deg 40.88% 48.24%)">Login</span>
+</h1>
+
+<form method="POST" class="container-form">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" name="username">
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password">
+    </div>
+
+    <button class="btn btn-primary submitTodo" type="submit">Login</button>
+
+</form>
+
+
+{% endblock %}

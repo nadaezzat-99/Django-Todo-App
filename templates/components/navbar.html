@@ -1,0 +1,42 @@
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light p-2" style="background-color: #ddeefa;">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                {%if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link fw-bold fs-5 ms-3" href="{% url 'home' %}">List of Todos</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link fw-bold fs-5 ms-3" href="{% url 'completedTodos' %}">Completed Todos</a>
+                </li>
+                {% endif %}
+            </ul>
+
+            <div class="d-flex">
+
+                {%if user.is_authenticated %}
+                <a href="{% url 'logout' %}">
+                    <button class="btn btn-outline-danger p-1 ps-2 pe-2 ms-2 me-2">LogOut</button>
+                </a>
+                {% else %}
+                <a href="{% url 'login' %}">
+                    <button class="btn btn-outline-success p-1 ps-2 pe-2 ms-2 me-2">Login</button>
+                </a>
+
+                <a href="{% url 'signup' %}">
+                    <button class="btn btn-outline-primary p-1 ps-2 pe-2 ms-2 me-2">SignUp</button>
+                </a>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</nav>
+{% endblock navbar %}

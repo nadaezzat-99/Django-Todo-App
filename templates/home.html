@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<div class="container w-60 m-auto p-5 bg-light mt-5 mb-5">
+
+    <h1 class="my-5 display-5 fw-bold ls-tight">
+        <span style="color: hsl(218deg 40.88% 48.24%)">Start New Achievment</span>
+        <a href="{% url 'createTodo' %}"> <i class="fa-solid fa-square-plus p-5 m-auto"> </i> </a>
+    </h1>
+
+    <form method="GET">
+        <div class="title-contains">
+            <label for="{{ filter.form.title.label }}" class="form-label">Title Contains: </label>
+            <input class="form-control title-contains" {{ filter.form.title }} </div>
+
+            <div class="boostrap-class">
+                <label for="{{ filter.form.is_completed.label }}" class="form-check-label">Is Completed: </label>
+                {{ filter.form.is_completed }}
+            </div>
+
+            <button class="btn btn-outline-primary submitTodo mt-2" type="submit">Search</button>
+
+    </form>
+
+    <div class="container todos pt-5 pb-5">
+        <ul>
+            {% for todo in todos %}
+            <li>
+                <section class="todo">
+                    <div class="container">
+                        <div class="row p-2 todoContainer">
+                            <div class="col-lg-8 col-md-6 col-xs-6">
+                                <a href="{% url 'detailed' todo.id %}" class="element p-3"> {{ todo.title }} </a>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-xs-6 actions">
+                                <button type="button" class="btn mx-1 action-btn">
+                                    <a href="{% url 'updateTodo' todo.id %}">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </button>
+
+                                <button type="button" class="btn mx-1 action-btn">
+                                    <a href="{% url 'deleteTodo' todo.id %}">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </a>
+                                </button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+
+
+{% endblock %}

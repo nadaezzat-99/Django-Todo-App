@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1 class="my-3 display-5 fw-bold ls-tight text-center">
+    <span style="color: hsl(218deg 40.88% 48.24%)">Sign Up</span>
+</h1>
+
+<form method="POST" class="container-form">
+    {% csrf_token %}
+
+    <table class="form-table">
+        {{form.as_table}}
+    </table>
+
+    <button class="btn btn-primary submitTodo" type="submit">Sign Up</button>
+</form>
+
+
+{% endblock %}
